@@ -8,5 +8,5 @@
   label for="Finish date:" Finish date(dd/mm/yyy):
   input#finish type="text" name="project[finish]" value="#{@project.finish.strftime("%d/%m/%Y") if @project.finish}"
   label for="description" Description:
-  textarea#description name="project[description]" value="#{@project.description}"
+  textarea#description name="project[description]" == @project.description
   input type="submit" value="Save project"

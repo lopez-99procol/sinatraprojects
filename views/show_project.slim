@@ -1,10 +1,10 @@
 h1 =@project.title
 pre Description: #{@project.description}
-p Start: #{@project.start.strftime("%e %B %Y")}
-p Finish: #{@project.finish.strftime("%e %B %Y")}
+p Start: #{@project.start.strftime("%e %B %Y") if @project.start}
+p Finish: #{@project.finish.strftime("%e %B %Y") if @project.finish}
 p Resource: #{@project.resource}
 p: a href="/projects" back to song index
-p: a href="/projects/#{@project.id}" edit this project
+p: a href="/projects/#{@project.id}/edit" edit this project
 form action="/projects/#{@project.id}" method="POST"
   input type="hidden" name="_method" value="DELETE"
   input type="submit" value="delete this song"

@@ -1,4 +1,5 @@
-require_relative './modelbase.rb'
+require 'dm-core'
+require 'dm-migrations'
 
 env = ENV['SINATRA_ENV']
 
@@ -12,16 +13,6 @@ else
   raise ArgumentError, 'No SINATRA_ENV specified'
 end
 
-class Project < ModelBase
-  include DataMapper::Resource
-  property :id, Serial
-  property :title, String
-  property :start, Date
-  property :finish, Date
-  property :description, Text
-  property :resource, Integer
-  
-  #has n, :tasks
-end
+class ModelBase
 
-DataMapper.finalize
+end

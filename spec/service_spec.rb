@@ -1,7 +1,10 @@
 require_relative '../service.rb' # this load the file you are testing
 require 'spec_helper.rb' # It will load the configuration you set in spec_helper.rb
 
-describe 'project webservice' do
+describe 'projects-webservice' do
+  before(:each) do
+    @id = Project.last.id.to_s
+  end
   context "page" do	
   	it "root is shown" do # the first test
   	  get '/' # you are visiting the home page
@@ -27,12 +30,12 @@ describe 'project webservice' do
     end
     
     it "projects is shown after deleting project" do
-      delete '/projects/'+ Project.last.id.to_s
+      delete '/projects/'+ @id
       expect(last_response.status).to eq(302)
     end
     
     it "show_project is shown after creating a new project" do
-      get '/project/new' 
+      get '/projects/new' 
       expect(last_response.status).to eq(200)
       expect{post '/projects', {
         :title => "lego",
@@ -40,6 +43,15 @@ describe 'project webservice' do
         :start => Time.now,
         :finish => Time.local(2099, 12, 31),
         :resource => '1'.to_i}}.to change{Project.count}.by(1)
+      expect(last_response.status).to eq(302)
     end
+    
+    it "edit_project is shown" do
+      route = '/projects/1/edit'
+      puts "edit_project[route] = #{route}"
+      get route
+      expect(last_response.status).to eq(200)
+    end
+    
   end
 end

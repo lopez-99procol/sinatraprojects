@@ -1,0 +1,4 @@
+h1 =@title || "Edit A Project"
+form method="POST" action="/project/#{@project.id}"
+  input type="hidden" name="_method" value="PUT"
+  == slim :_project_form

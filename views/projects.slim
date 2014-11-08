@@ -1,0 +1,8 @@
+h1 =@title || "Listing of all projects"
+a href="/project/new" Create new project
+- if @projects.any?
+  ul#projects
+    -@projects.each do |project|
+      li <a href="/projects/#{project.id}">#{project.title}</a>
+- else
+  p No songs found

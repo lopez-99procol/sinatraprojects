@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'json'
+gem 'slim'
+gem 'sass'
+gem 'tilt', '~> 1.4.1'
+gem 'capybara'
+gem 'rack-test'
+gem 'data_mapper'
+gem 'dm-sqlite-adapter'
